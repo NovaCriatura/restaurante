@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Reserva - Restaurante Italiano</title>
+    <style>
+        body {
+            font-family: 'Lora', serif;
+           background-image: url('reserva.jpeg');
+           background-repeat: no-repeat;
+         background-size:100%;
+	      background-position: center;
+	      background-attachment: fixed;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        #reservation-form {
+            width: 400px;
+            margin: 150px auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #d9534f;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #c9302c;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="reservation-form">
+        <h2>Faça sua Reserva</h2>
+        <form onsubmit="return validateForm()">
+            <label for="personName">Nome:</label>
+            <input type="text" id="personName" name="personName" required>
+
+            <label for="phoneNumber">Número de Celular:</label>
+            <input type="tel" id="phoneNumber" name="phoneNumber" pattern="[0-9]{11}" required
+                   title="O número de celular deve conter 10 dígitos numéricos">
+
+            <button type="submit">Reservar Agora</button>
+        </form>
+    </div>
+
+    <script>
+        function validateForm() {
+            var personName = document.getElementById('personName').value;
+            var phoneNumber = document.getElementById('phoneNumber').value;
+
+            // Validando nome e número de celular
+            if (personName !== '' && /^\d{11}$/.test(phoneNumber)) {
+                alert('Login bem-sucedido! Redirecionando para o WhatsApp...');
+                // Redirecionar para o WhatsApp (substitua com seu número de WhatsApp)
+                window.location.href = 'https://wa.me/5561996771080';
+                return false; // Impede o envio do formulário (evita que a página seja recarregada)
+            } else {
+                alert('Login falhou. Verifique seu nome e número de celular (deve conter 11 dígitos numéricos).');
+                return false; // Impede o envio do formulário
+            }
+        }
+    </script>
+
+</body>
+</html>
